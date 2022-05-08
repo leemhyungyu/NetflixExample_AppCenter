@@ -14,9 +14,6 @@
 		2C6887202827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2C68871E2827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld */; };
 		2C6887222827DF8D0021C613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6887212827DF8D0021C613 /* Assets.xcassets */; };
 		2C6887252827DF8D0021C613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6887232827DF8D0021C613 /* LaunchScreen.storyboard */; };
-		2C6887302827DF8D0021C613 /* NetflixExample_AppCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68872F2827DF8D0021C613 /* NetflixExample_AppCenterTests.swift */; };
-		2C68873A2827DF8D0021C613 /* NetflixExample_AppCenterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6887392827DF8D0021C613 /* NetflixExample_AppCenterUITests.swift */; };
-		2C68873C2827DF8D0021C613 /* NetflixExample_AppCenterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C68873B2827DF8D0021C613 /* NetflixExample_AppCenterUITestsLaunchTests.swift */; };
 		2C6887492827E0400021C613 /* AppTabbarControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6887482827E0400021C613 /* AppTabbarControlller.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,10 +45,7 @@
 		2C6887242827DF8D0021C613 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C6887262827DF8D0021C613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C68872B2827DF8D0021C613 /* NetflixExample_AppCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetflixExample_AppCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C68872F2827DF8D0021C613 /* NetflixExample_AppCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixExample_AppCenterTests.swift; sourceTree = "<group>"; };
 		2C6887352827DF8D0021C613 /* NetflixExample_AppCenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetflixExample_AppCenterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C6887392827DF8D0021C613 /* NetflixExample_AppCenterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixExample_AppCenterUITests.swift; sourceTree = "<group>"; };
-		2C68873B2827DF8D0021C613 /* NetflixExample_AppCenterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixExample_AppCenterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2C6887482827E0400021C613 /* AppTabbarControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarControlller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				2C6887142827DF8B0021C613 /* NetflixExample_AppCenter */,
-				2C68872E2827DF8D0021C613 /* NetflixExample_AppCenterTests */,
-				2C6887382827DF8D0021C613 /* NetflixExample_AppCenterUITests */,
 				2C6887132827DF8B0021C613 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,23 +105,6 @@
 				2C68871E2827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld */,
 			);
 			path = NetflixExample_AppCenter;
-			sourceTree = "<group>";
-		};
-		2C68872E2827DF8D0021C613 /* NetflixExample_AppCenterTests */ = {
-			isa = PBXGroup;
-			children = (
-				2C68872F2827DF8D0021C613 /* NetflixExample_AppCenterTests.swift */,
-			);
-			path = NetflixExample_AppCenterTests;
-			sourceTree = "<group>";
-		};
-		2C6887382827DF8D0021C613 /* NetflixExample_AppCenterUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2C6887392827DF8D0021C613 /* NetflixExample_AppCenterUITests.swift */,
-				2C68873B2827DF8D0021C613 /* NetflixExample_AppCenterUITestsLaunchTests.swift */,
-			);
-			path = NetflixExample_AppCenterUITests;
 			sourceTree = "<group>";
 		};
 		2C68874A2827E04D0021C613 /* VC */ = {
@@ -284,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C6887302827DF8D0021C613 /* NetflixExample_AppCenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,8 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C68873A2827DF8D0021C613 /* NetflixExample_AppCenterUITests.swift in Sources */,
-				2C68873C2827DF8D0021C613 /* NetflixExample_AppCenterUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
