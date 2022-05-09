@@ -15,6 +15,7 @@
 		2C6887222827DF8D0021C613 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C6887212827DF8D0021C613 /* Assets.xcassets */; };
 		2C6887252827DF8D0021C613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6887232827DF8D0021C613 /* LaunchScreen.storyboard */; };
 		2C6887492827E0400021C613 /* AppTabbarControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6887482827E0400021C613 /* AppTabbarControlller.swift */; };
+		2C927DB52828E3400045DED8 /* RecommendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C927DB42828E3400045DED8 /* RecommendListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2C68872B2827DF8D0021C613 /* NetflixExample_AppCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetflixExample_AppCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6887352827DF8D0021C613 /* NetflixExample_AppCenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetflixExample_AppCenterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6887482827E0400021C613 /* AppTabbarControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarControlller.swift; sourceTree = "<group>"; };
+		2C927DB42828E3400045DED8 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				2C6887482827E0400021C613 /* AppTabbarControlller.swift */,
 				2C6887192827DF8B0021C613 /* HomeViewController.swift */,
+				2C927DB42828E3400045DED8 /* RecommendListViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				2C6887202827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld in Sources */,
 				2C68871A2827DF8B0021C613 /* HomeViewController.swift in Sources */,
 				2C6887162827DF8B0021C613 /* AppDelegate.swift in Sources */,
+				2C927DB52828E3400045DED8 /* RecommendListViewController.swift in Sources */,
 				2C6887492827E0400021C613 /* AppTabbarControlller.swift in Sources */,
 				2C6887182827DF8B0021C613 /* SceneDelegate.swift in Sources */,
 			);
