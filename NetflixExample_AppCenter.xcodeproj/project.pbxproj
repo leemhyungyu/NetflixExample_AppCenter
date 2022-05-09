@@ -16,6 +16,7 @@
 		2C6887252827DF8D0021C613 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C6887232827DF8D0021C613 /* LaunchScreen.storyboard */; };
 		2C6887492827E0400021C613 /* AppTabbarControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6887482827E0400021C613 /* AppTabbarControlller.swift */; };
 		2C927DB52828E3400045DED8 /* RecommendListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C927DB42828E3400045DED8 /* RecommendListViewController.swift */; };
+		2C927DB828290EAE0045DED8 /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C927DB728290EAE0045DED8 /* RecommendCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2C6887352827DF8D0021C613 /* NetflixExample_AppCenterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetflixExample_AppCenterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C6887482827E0400021C613 /* AppTabbarControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabbarControlller.swift; sourceTree = "<group>"; };
 		2C927DB42828E3400045DED8 /* RecommendListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendListViewController.swift; sourceTree = "<group>"; };
+		2C927DB728290EAE0045DED8 /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		2C6887142827DF8B0021C613 /* NetflixExample_AppCenter */ = {
 			isa = PBXGroup;
 			children = (
+				2C927DB628290E890045DED8 /* Cell */,
 				2C68874A2827E04D0021C613 /* VC */,
 				2C6887152827DF8B0021C613 /* AppDelegate.swift */,
 				2C6887172827DF8B0021C613 /* SceneDelegate.swift */,
@@ -117,6 +120,14 @@
 				2C927DB42828E3400045DED8 /* RecommendListViewController.swift */,
 			);
 			path = VC;
+			sourceTree = "<group>";
+		};
+		2C927DB628290E890045DED8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				2C927DB728290EAE0045DED8 /* RecommendCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				2C6887202827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld in Sources */,
 				2C68871A2827DF8B0021C613 /* HomeViewController.swift in Sources */,
 				2C6887162827DF8B0021C613 /* AppDelegate.swift in Sources */,
+				2C927DB828290EAE0045DED8 /* RecommendCell.swift in Sources */,
 				2C927DB52828E3400045DED8 /* RecommendListViewController.swift in Sources */,
 				2C6887492827E0400021C613 /* AppTabbarControlller.swift in Sources */,
 				2C6887182827DF8B0021C613 /* SceneDelegate.swift in Sources */,

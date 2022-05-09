@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="GSW-Nn-OY8">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="GSW-Nn-OY8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1117"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joA-Kq-iaJ">
@@ -225,7 +225,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="thumbnailImage" destination="N2Y-IF-HE7" id="4BT-JT-RP3"/>
+                                            <outlet property="thumbnailImage" destination="N2Y-IF-HE7" id="ByC-GP-W75"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -299,7 +299,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="thumbnailImage" destination="EZV-yl-KE8" id="tea-V4-xOQ"/>
+                                            <outlet property="thumbnailImage" destination="EZV-yl-KE8" id="BI3-Mg-7IG"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -309,6 +309,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="OZ6-qg-LYh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ffb-Tf-hBd" secondAttribute="trailing" id="HtD-Bo-Fbd"/>
@@ -372,7 +373,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="thumbnailImage" destination="74j-LW-wdu" id="twi-Wv-zAm"/>
+                                            <outlet property="thumbnailImage" destination="74j-LW-wdu" id="IXE-L2-eXD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -382,6 +383,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="byY-7d-8tk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tMN-Da-oC4" secondAttribute="trailing" id="VDx-ue-Bl2"/>
