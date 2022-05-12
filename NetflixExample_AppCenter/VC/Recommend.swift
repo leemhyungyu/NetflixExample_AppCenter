@@ -27,7 +27,6 @@ class RecommentListViewModel {
         }
     }
     
-    // 클래스의 초기 설정 값 ?
     private (set) var type: RecommendingType = .my
     
     private var items: [DummyItem] = []
@@ -60,11 +59,10 @@ class MovieFetcher {
             // Map 함수란 기존 데이터를 변형하여 새로운 컨테이너를 만드는데 사용, 기존 데이터는 변형되지 않는다.
             // Map 함수는 기존의 for-in 구문과 큰 차이가 없지만 Map함수를 사용하면 다음과 같은 이점이 있다.
             // 1. 코드의 간결성, 2. 재사용 용이, 3. 컴파일러 최적화 성능 좋음
-            
-            let Array = 1..<10
+            let Arrays = 1..<10
             var movies = [DummyItem]()
-            for i in Array {
-                movies.append(DummyItem(thumbnail: UIImage(named: "img_movie_\(i)")!))
+            for Array in Arrays {
+                movies.append(DummyItem(thumbnail: UIImage(named: "img_movie_\(Array)")!))
             }
 //            let movies = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
             return movies
@@ -78,11 +76,11 @@ class MovieFetcher {
     }
 }
 
-class RecommendCell: UICollectionViewCell {
-
-    @IBOutlet weak var thumbnailImage: UIImageView!
-    
-    func updateUI(movie: DummyItem) {
-        thumbnailImage.image = movie.thumbnail
-    }
-}
+//class RecommendCell: UICollectionViewCell {
+//
+//    @IBOutlet weak var thumbnailImage: UIImageView!
+//    
+//    func updateUI(movie: DummyItem) {
+//        thumbnailImage.image = movie.thumbnail
+//    }
+//}
