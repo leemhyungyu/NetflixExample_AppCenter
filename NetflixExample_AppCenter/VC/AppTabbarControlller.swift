@@ -61,7 +61,9 @@ class AppTabbarController: UITabBarController {
     
     func setting() {
         
-        tabBar.tintColor = .systemGray
+        tabBar.tintColor = .white
+        tabBar.backgroundColor = .systemGray6
+        
         viewControllers = [homeVC, searchVC, commingVC, saveVC, settingVC]
         
         homeVC.tabBarItem = homeTab
