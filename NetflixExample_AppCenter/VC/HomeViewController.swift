@@ -40,7 +40,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
       setup()
     }
     
-    // MARK: - Handlers
     func setup() {
         view.addSubview(collectionView)
         
