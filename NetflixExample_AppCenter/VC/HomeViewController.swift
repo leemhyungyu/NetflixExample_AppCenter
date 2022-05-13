@@ -12,20 +12,25 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
 
 
     let viewModel = RecommentListViewModel()
-    
-    private let collectionViewControllerCellId = "HomeTopCell"
+        
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex,envi) -> NSCollectionLayoutSection? in
             switch sectionIndex {
-            case 0: return self.homeFirstCreateCompositionalLayout()
-            default: return self.homeSecondCreateCompositionalLayout()
+            case 0:
+                return self.homeFirstCreateCompositionalLayout()
+                
+            default:
+                return self.homeSecondCreateCompositionalLayout()
             }
         }
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(HomeTopCell.self, forCellWithReuseIdentifier: HomeTopCell.identifier)
+        
         collectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
-        collectionView.register(headerView.self, forSupplementaryViewOfKind: headerView.identifier, withReuseIdentifier: headerView.identifier)
+        collectionView.register(HomeHeaderView.self, forSupplementaryViewOfKind:
+                                    UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderView.identifier)
         
         return collectionView
     }()
@@ -97,7 +102,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
   extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
       
       func numberOfSections(in collectionView: UICollectionView) -> Int {
-          return 4
+          return SectionType.allCases.count
       }
 
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -117,6 +122,28 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
 
           }
     }
+      
+      func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+   
+          guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderView.identifier, for: indexPath) as? HomeHeaderView else { return UICollectionReusableView() }
+          
+          switch indexPath.section {
+          case 1:
+              header.titleLabel.text = SectionType.award.title
+              return header
+          case 2:
+              header.titleLabel.text = SectionType.hot.title
+              return header
+          case 3:
+              header.titleLabel.text = SectionType.my.title
+              
+              return header
+          default:
+              header.titleLabel.text = "error"
+              return header
+        }
+    }
+  
     
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 

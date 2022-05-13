@@ -7,27 +7,29 @@
 
 import UIKit
 
+
 struct DummyItem {
     let thumbnail: UIImage
 }
 
-class RecommentListViewModel {
+enum SectionType: CaseIterable{
+    case home
+    case award
+    case hot
+    case my
     
-    enum RecommendingType {
-        case award
-        case hot
-        case my
-        
-        var titie: String {
-            switch self {
-            case .award: return "아카데미 호평 영화"
-            case .hot: return "취향저격 HOT 콘텐츠"
-            case .my: return "내가 찜한 콘텐츠"
-            }
+    var title: String {
+        switch self {
+        case .award: return "아카데미 호평 영화"
+        case .hot: return "취향저격 HOT 콘텐츠"
+        case .my: return "내가 찜한 콘텐츠"
+        case .home: return ""
         }
     }
+}
+
+class RecommentListViewModel {
     
-    private (set) var type: RecommendingType = .my
 
     var awardItem = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
 

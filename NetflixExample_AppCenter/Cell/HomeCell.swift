@@ -28,5 +28,6 @@ class HomeCell: UICollectionViewCell {
         movieImage.translatesAutoresizingMaskIntoConstraints = false
         movieImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
         movieImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
+//        movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
     }
 }
