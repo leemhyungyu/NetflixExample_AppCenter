@@ -7,7 +7,7 @@
 import UIKit
 import AVFoundation
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
 
     static var identifier = "PlayerViewController"
     
@@ -19,8 +19,6 @@ class PlayerViewController: UIViewController {
         
         let btn = UIButton()
         btn.configuration = config
-        btn.setImage(UIImage(systemName: "play.fill"), for: .normal)
-        btn.setImage(UIImage(systemName: "pause.fill"), for: .selected)
         btn.tintColor = .white
         
         btn.addTarget(self, action: #selector(playBtnClicked), for: .touchUpInside)
@@ -43,15 +41,14 @@ class PlayerViewController: UIViewController {
     
     let playerView: PlayerView = {
         let playerView = PlayerView()
-        playerView.backgroundColor = .red
         return playerView
     }()
     
     let controlView: UIView = {
        
-        let controlerView = UIView()
-        controlerView.backgroundColor = .clear
-        return controlerView
+        let controlView = UIView()
+        controlView.backgroundColor =  UIColor(white: 0, alpha: 0.01)
+        return controlView
     }()
     
     override func viewDidLoad() {
@@ -59,6 +56,11 @@ class PlayerViewController: UIViewController {
         playerView.player = player
         setUp()
         play()
+        let geusture = UITapGestureRecognizer(target: self, action: #selector(tapBG))
+
+        view.addGestureRecognizer(geusture)
+
+        
     }
     
     // 가로모드로 강제 조절
@@ -66,9 +68,36 @@ class PlayerViewController: UIViewController {
         return .landscapeRight
     }
     
+    @objc func backBtnClicked() {
+        reset()
+        dismiss(animated: true)
+    }
+    
+    @objc func playBtnClicked() {
+        
+        if player.isPlaying {
+            pause()
+            print("--> player is paseing")
+        } else {
+            print("--> player is palaying")
+            play()
+        }
+    }
+    
+    @objc func tapBG() {
+        print("--> BG clicked")
+        playBtn.isHidden = !playBtn.isHidden
+        backBtn.isHidden = !backBtn.isHidden
+    }
+}
+
+extension PlayerViewController {
+    
     func setUp() {
+
         view.addSubview(controlView)
         view.addSubview(playerView)
+        
         controlView.addSubview(playBtn)
         controlView.addSubview(backBtn)
 
@@ -89,36 +118,17 @@ class PlayerViewController: UIViewController {
             $0.top.equalToSuperview().offset(16)
             $0.trailing.equalToSuperview().offset(-20)
         }
-        
         self.view.bringSubviewToFront(self.controlView)
     }
     
-    @objc func backBtnClicked() {
-        reset()
-        dismiss(animated: true)
-    }
-    
-    @objc func playBtnClicked() {
-        
-        if player.isPlaying {
-            pause()
-            print("--> player is playing")
-        } else {
-            print("--> player is pausing")
-            play()
-        }
-    }
-}
-
-extension PlayerViewController {
     func play() {
         player.play()
-        playBtn.isSelected = true
+        playBtn.setImage(UIImage(systemName: "pause.fill"), for: .normal)
     }
     
     func pause() {
         player.pause()
-        playBtn.isSelected = false
+        playBtn.setImage(UIImage(systemName: "play.fill"), for: .normal)
     }
     
     func reset() {
@@ -126,6 +136,7 @@ extension PlayerViewController {
         player.replaceCurrentItem(with: nil)
     }
 }
+
 extension AVPlayer {
     var isPlaying: Bool {
         guard self.currentItem != nil else { return false }
