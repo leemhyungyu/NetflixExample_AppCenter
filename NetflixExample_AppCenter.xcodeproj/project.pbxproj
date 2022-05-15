@@ -24,6 +24,7 @@
 		2CDD5943282CEB8B00CFC8AC /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD5942282CEB8B00CFC8AC /* HomeCell.swift */; };
 		2CDD5945282D743D00CFC8AC /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDD5944282D743D00CFC8AC /* HomeHeaderView.swift */; };
 		2CE4B1052830CC5400F71CF0 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4B1042830CC5400F71CF0 /* Search.swift */; };
+		2CE4B1072830D2E700F71CF0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4B1062830D2E700F71CF0 /* SearchCell.swift */; };
 		368DDFE2B8ED09A3B10937AB /* Pods_NetflixExample_AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33575E8AAFC381ADE80981D /* Pods_NetflixExample_AppCenter.framework */; };
 		90A427ECFBEB04035E97D901 /* Pods_NetflixExample_AppCenter_NetflixExample_AppCenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC48917CA02F06076399CE1 /* Pods_NetflixExample_AppCenter_NetflixExample_AppCenterUITests.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		2CDD5942282CEB8B00CFC8AC /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		2CDD5944282D743D00CFC8AC /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		2CE4B1042830CC5400F71CF0 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		2CE4B1062830D2E700F71CF0 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		4A00968E35EF251D49FC17E2 /* Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests/Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEBE30F1CC4262EA064E04C /* Pods-NetflixExample_AppCenterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenterTests.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenterTests/Pods-NetflixExample_AppCenterTests.release.xcconfig"; sourceTree = "<group>"; };
 		A958FD2D8A514FBEE0EE8C72 /* Pods-NetflixExample_AppCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenter.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenter/Pods-NetflixExample_AppCenter.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				2CDD5940282CEB8000CFC8AC /* HomeTopCell.swift */,
 				2CDD5942282CEB8B00CFC8AC /* HomeCell.swift */,
 				2CDD5944282D743D00CFC8AC /* HomeHeaderView.swift */,
+				2CE4B1062830D2E700F71CF0 /* SearchCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6887202827DF8B0021C613 /* NetflixExample_AppCenter.xcdatamodeld in Sources */,
+				2CE4B1072830D2E700F71CF0 /* SearchCell.swift in Sources */,
 				2C68871A2827DF8B0021C613 /* HomeViewController.swift in Sources */,
 				2C6887162827DF8B0021C613 /* AppDelegate.swift in Sources */,
 				2CDD593E282CE37700CFC8AC /* SaveViewController.swift in Sources */,
