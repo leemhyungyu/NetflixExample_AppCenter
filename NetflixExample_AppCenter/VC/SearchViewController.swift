@@ -71,7 +71,9 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         
         let playerVC = PlayerViewController()
         playerVC.modalPresentationStyle = .fullScreen
-        present(playerVC, animated: true)
+        print(url)
+        playerVC.player.replaceCurrentItem(with: item)
+        present(playerVC, animated: true, completion: nil)
     }
 }
 
