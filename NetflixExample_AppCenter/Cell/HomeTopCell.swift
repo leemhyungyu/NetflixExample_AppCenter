@@ -73,26 +73,24 @@ class HomeTopCell: UICollectionViewCell {
         addSubview(plusBtn)
         addSubview(infoBtn)
         
-        infoBtn.translatesAutoresizingMaskIntoConstraints = false
-        infoBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
-        infoBtn.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor).isActive = true
-        infoBtn.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 50).isActive = true
+        plusBtn.snp.makeConstraints {
+            $0.trailing.equalTo(playBtn.snp.leading).offset(-50)
+            $0.centerY.equalTo(playBtn)
+        }
         
+        infoBtn.snp.makeConstraints {
+            $0.leading.equalTo(playBtn.snp.trailing).offset(50)
+            $0.centerY.equalTo(playBtn)
+        }
+        playBtn.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(100)
+            $0.height.equalTo(30)
+        }
         
-        plusBtn.translatesAutoresizingMaskIntoConstraints = false
-        plusBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
-        plusBtn.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor).isActive = true
-        
-        playBtn.translatesAutoresizingMaskIntoConstraints = false
-        playBtn.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        playBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        playBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        playBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
-        playBtn.leadingAnchor.constraint(equalTo: plusBtn.trailingAnchor, constant: 50).isActive = true
-
-
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 466).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        imageView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+        }
     }
   }

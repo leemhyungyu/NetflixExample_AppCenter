@@ -24,13 +24,11 @@ class SearchCell: UICollectionViewCell {
     private func setUp() {
         addSubview(imageView)
         
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-//        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 128).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
+
+        imageView.snp.makeConstraints {
+            $0.top.leading.trailing.bottom.equalToSuperview()
+        }
+
     }
 }
 

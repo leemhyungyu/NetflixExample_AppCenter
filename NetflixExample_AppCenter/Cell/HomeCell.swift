@@ -25,9 +25,9 @@ class HomeCell: UICollectionViewCell {
     }
     func setUp() {
         addSubview(movieImage)
-        movieImage.translatesAutoresizingMaskIntoConstraints = false
-        movieImage.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        movieImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
-//        movieImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
+        
+        movieImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

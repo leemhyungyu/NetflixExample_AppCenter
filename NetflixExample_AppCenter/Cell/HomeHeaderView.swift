@@ -25,13 +25,10 @@ class HomeHeaderView: UICollectionReusableView {
     func setUp() {
         
         addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        titleLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//        
-//        titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+        titleLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
 }

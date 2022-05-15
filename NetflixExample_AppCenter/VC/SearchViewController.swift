@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class SearchViewController: UIViewController {
     var collectionView: UICollectionView = {
     
         let layout = UICollectionViewFlowLayout()
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.identifier)
 
@@ -40,35 +42,45 @@ class SearchViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         
+        collectionView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.top.equalTo(searchBar.snp.bottom)
+            $0.bottom.equalToSuperview()
+        }
+//        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
+//        collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+
+
         searchBar.delegate = self
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
-        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        searchBar.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+//        searchBar.translatesAutoresizingMaskIntoConstraints = false
+//        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+//        searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
     }
 }
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let margin: CGFloat = 8
         let itemSpacing: CGFloat = 10
         let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
         let height = width * 10/7
         return CGSize(width: width, height: height)
-        
     }
 }
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return movies.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -78,6 +90,10 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let searchCell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
+        
+        let movie = movies[indexPath.item]
+        let url = URL(string: movie.thumbnailPath)!
+        searchCell.imageView.kf.setImage(with: url)
         
         return searchCell
                 
@@ -100,8 +116,10 @@ extension SearchViewController: UISearchBarDelegate {
         
         
         SearchAPI.search(searchTerm) { movies in
-            self.movies = movies
-            print(movies.count)
+            DispatchQueue.main.async {
+                self.movies = movies
+                self.collectionView.reloadData()
+            }
         }
         
         print("--> 검색어: \(searchTerm)")
