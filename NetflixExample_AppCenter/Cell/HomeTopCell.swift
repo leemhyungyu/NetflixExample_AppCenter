@@ -74,17 +74,17 @@ class HomeTopCell: UICollectionViewCell {
         addSubview(infoBtn)
         
         plusBtn.snp.makeConstraints {
-            $0.trailing.equalTo(playBtn.snp.leading).offset(-50)
+            $0.trailing.equalTo(playBtn.snp.leading).offset(-40)
             $0.centerY.equalTo(playBtn)
         }
         
         infoBtn.snp.makeConstraints {
-            $0.leading.equalTo(playBtn.snp.trailing).offset(50)
+            $0.leading.equalTo(playBtn.snp.trailing).offset(40)
             $0.centerY.equalTo(playBtn)
         }
         playBtn.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(imageView.snp.bottom).offset(10)
             $0.width.equalTo(100)
             $0.height.equalTo(30)
         }

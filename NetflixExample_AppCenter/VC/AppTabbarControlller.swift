@@ -4,7 +4,6 @@
 //
 //  Created by 임현규 on 2022/05/08.
 //
-
 import UIKit
 
 class AppTabbarController: UITabBarController {

@@ -31,7 +31,10 @@ struct Movie: Codable {
     }
 }
 
-class SearchAPI {
+class SearchViewModel {
+    
+    var movies: [Movie] = []
+
     static func search(_ term: String, completion: @escaping ([Movie]) -> Void) {
         
         let session = URLSession(configuration: .default)
@@ -48,8 +51,7 @@ class SearchAPI {
             guard error == nil, let statusCode = (response as? HTTPURLResponse)?.statusCode, successRange.contains(statusCode) else { return completion([]) }
             guard let resultData = data else { return completion([]) }
             
-//            completion([Movie])
-            let movies = SearchAPI.parseMovie(resultData)
+            let movies = SearchViewModel.parseMovie(resultData)
             completion(movies)
         }
         dataTask.resume()

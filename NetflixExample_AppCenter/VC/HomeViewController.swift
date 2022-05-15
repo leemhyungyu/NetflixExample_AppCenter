@@ -4,7 +4,6 @@
 //
 //  Created by 임현규 on 2022/05/08.
 //
-
 import UIKit
 import SnapKit
 
@@ -17,7 +16,6 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex,envi) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
-                print("??")
                 return self.homeFirstCreateCompositionalLayout()
                 
             default:
@@ -60,7 +58,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(120.0), heightDimension: .absolute(160.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1.5, bottom: 1, trailing: 1.5)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(160.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
@@ -81,7 +79,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(466))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(466))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(480))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
         
         let section = NSCollectionLayoutSection(group: group)
