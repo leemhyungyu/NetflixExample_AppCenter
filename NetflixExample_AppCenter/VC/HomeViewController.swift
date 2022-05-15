@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex,envi) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
+                print("??")
                 return self.homeFirstCreateCompositionalLayout()
                 
             default:

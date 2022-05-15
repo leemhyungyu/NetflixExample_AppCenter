@@ -12,7 +12,7 @@ class HomeTopCell: UICollectionViewCell {
     
     static let identifier = "HomeTopCell"
     
-    static let pointSize: CGFloat = 30
+    static let pointSize: CGFloat = 25
     
     let label: UILabel = UILabel()
     
@@ -27,14 +27,14 @@ class HomeTopCell: UICollectionViewCell {
     private let playBtn: UIButton = {
         let btn = UIButton()
         
-        btn.setTitle("재생", for: .normal)
+        btn.setTitle("재생", for: .normal) 
         btn.setTitleColor(.black, for: .normal)
         btn.tintColor = .black
         btn.setImage(UIImage(systemName: "play.fill"), for: .normal)
         btn.backgroundColor = .white
         return btn
     }()
-    
+
     private let plusBtn: UIButton = {
         
         let btn = UIButton()
@@ -74,22 +74,18 @@ class HomeTopCell: UICollectionViewCell {
         addSubview(infoBtn)
         
         infoBtn.translatesAutoresizingMaskIntoConstraints = false
-        infoBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        infoBtn.widthAnchor.constraint(equalToConstant: 30).isActive = true
         infoBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
         infoBtn.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor).isActive = true
         infoBtn.leadingAnchor.constraint(equalTo: playBtn.trailingAnchor, constant: 50).isActive = true
         
         
         plusBtn.translatesAutoresizingMaskIntoConstraints = false
-        plusBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        plusBtn.widthAnchor.constraint(equalToConstant: 30).isActive = true
         plusBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
         plusBtn.centerYAnchor.constraint(equalTo: playBtn.centerYAnchor).isActive = true
         
         playBtn.translatesAutoresizingMaskIntoConstraints = false
         playBtn.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        playBtn.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        playBtn.widthAnchor.constraint(equalToConstant: 100).isActive = true
         playBtn.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         playBtn.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 16).isActive = true
         playBtn.leadingAnchor.constraint(equalTo: plusBtn.trailingAnchor, constant: 50).isActive = true
