@@ -29,8 +29,8 @@ class SearchCell: UICollectionViewCell {
 //        imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
 //        imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 //        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 160).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 128).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 128).isActive = true
     }
 }
 

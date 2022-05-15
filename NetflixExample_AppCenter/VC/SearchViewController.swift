@@ -43,13 +43,26 @@ class SearchViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10).isActive = true
+        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor).isActive = true
         
         searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+    }
+}
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let margin: CGFloat = 8
+        let itemSpacing: CGFloat = 10
+        let width = (collectionView.bounds.width - margin * 2 - itemSpacing * 2) / 3
+        let height = width * 10/7
+        return CGSize(width: width, height: height)
+        
     }
 }
 
@@ -88,6 +101,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         SearchAPI.search(searchTerm) { movies in
             self.movies = movies
+            print(movies.count)
         }
         
         print("--> 검색어: \(searchTerm)")
