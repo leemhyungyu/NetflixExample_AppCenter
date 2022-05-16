@@ -11,11 +11,11 @@ import AVFoundation
 class SearchViewController: UIViewController {
 
     let viewModel = SearchViewModel()
+    
     var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         
         return searchBar
-        
     }()
     
     var collectionView: UICollectionView = {
@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.identifier)
 
         return collectionView
@@ -56,6 +57,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     
+    // 아이템의 사이즈를 반환하는 메소드
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let margin: CGFloat = 8
@@ -64,25 +66,17 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         let height = width * 10/7
         return CGSize(width: width, height: height)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let url = URL(string: viewModel.movies[indexPath.item].previewURL)!
-        let item = AVPlayerItem(url: url)
-        
-        let playerVC = PlayerViewController()
-        playerVC.modalPresentationStyle = .fullScreen
-        print(url)
-        playerVC.player.replaceCurrentItem(with: item)
-        present(playerVC, animated: true, completion: nil)
-    }
+
 }
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    // 섹션마다 아이템의 개수를 반환해주는 메소드
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.movies.count
     }
     
+    // 아이템의 cell정보를 반환해주는 메소드
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let searchCell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
@@ -93,14 +87,27 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         
         return searchCell
     }
+    
+    // 아이템이 클릭되었을 때 실행되는 메소드
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let url = URL(string: viewModel.movies[indexPath.item].previewURL)!
+        let item = AVPlayerItem(url: url)
+        
+        let playerVC = PlayerViewController()
+        playerVC.modalPresentationStyle = .fullScreen
+        playerVC.player.replaceCurrentItem(with: item)
+        present(playerVC, animated: true, completion: nil)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
+    // 키보드를 내려주는 함수
     private func dismissKeyboard() {
         searchBar.resignFirstResponder()
     }
     
+    // SearchBar에서 SearchBtn이 클릭되었을 때 실행되는 함수
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard()
         

@@ -13,25 +13,29 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
     let viewModel = RecommentListViewModel()
         
     lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex,envi) -> NSCollectionLayoutSection? in
+    
+        // sectionIndex를 인자로 받아 NSCollectionLayoutSection타입을 반환하는 클로저
+        let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
             case 0:
                 return self.homeFirstCreateCompositionalLayout()
-                
             default:
                 return self.homeSecondCreateCompositionalLayout()
             }
         }
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        // 위에 선언한 UICollectionViewCompositionalLayout을 collectionView의 layout으로 넣어줌
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(HomeTopCell.self, forCellWithReuseIdentifier: HomeTopCell.identifier)
+        // collectionView에 cell과 view를 등록해줌
+        cv.register(HomeTopCell.self, forCellWithReuseIdentifier: HomeTopCell.identifier)
+        cv.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
         
-        collectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
-        collectionView.register(HomeHeaderView.self, forSupplementaryViewOfKind:
+        // HomeHeaderView는 kind 값을 elementKindSectionHeader로 넣어줌 -> 헤더로 사용하기 위해
+        cv.register(HomeHeaderView.self, forSupplementaryViewOfKind:
                                     UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderView.identifier)
         
-        return collectionView
+        return cv
     }()
     
     override func viewDidLoad() {
@@ -45,35 +49,12 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        collectionView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     
-    
-    func homeSecondCreateCompositionalLayout() -> NSCollectionLayoutSection {
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(120.0), heightDimension: .absolute(160.0))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1.5, bottom: 1, trailing: 1.5)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(160.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        
-        let titleHeader = createTitleHeaderLayout()
-        
-        section.boundarySupplementaryItems = [ titleHeader ]
-        
-        section.orthogonalScrollingBehavior = .continuous
-        
-        return section
-    }
-    
+    // 첫번쨰 cell의 NSCollectionLayoutSection을 반환해주는 함수
     func homeFirstCreateCompositionalLayout() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(466))
@@ -89,23 +70,37 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
         
     }
     
-    func createTitleHeaderLayout() -> NSCollectionLayoutBoundarySupplementaryItem {
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+    // 나머지 cell의 NSCollectionLayoutSection을 반환해주는 함수
+    func homeSecondCreateCompositionalLayout() -> NSCollectionLayoutSection {
+        
+        let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(120.0), heightDimension: .absolute(160.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1.5, bottom: 1, trailing: 1.5)
 
-        return header
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(160.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(30))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.boundarySupplementaryItems = [ sectionHeader ]
+        section.orthogonalScrollingBehavior = .continuous
+        
+        return section
     }
 }
 
   extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
       
+      // 섹션의 개수를 반환하는 메소드
       func numberOfSections(in collectionView: UICollectionView) -> Int {
           return SectionType.allCases.count
       }
 
+      // 섹셩단 아이템의 개수를 반환하는 메소드
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-
+          
           switch section {
           case 0:
               return 1
@@ -117,10 +112,10 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
               return viewModel.myItem.count
           default:
               return 0
-
           }
-    }
+      }
       
+      // 섹션의 헤더를 반환하는 메소드
       func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
    
           guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HomeHeaderView.identifier, for: indexPath) as? HomeHeaderView else { return UICollectionReusableView() }
@@ -139,10 +134,11 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
           default:
               header.titleLabel.text = "error"
               return header
-        }
-    }
+          }
+      }
   
     
+      // collectionView의 섹션마다의 cell정보를 반환하는 메소드
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
           guard let topCell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeTopCell.identifier, for: indexPath) as? HomeTopCell else { return UICollectionViewCell() }

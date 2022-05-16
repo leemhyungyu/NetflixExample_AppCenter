@@ -30,11 +30,8 @@ enum SectionType: CaseIterable{
 
 class RecommentListViewModel {
     
-
     var awardItem = (1..<10).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-
     var hotItem = (10..<19).map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
-
     var myItem = (1..<10).map { $0 * 2 }.map { DummyItem(thumbnail: UIImage(named: "img_movie_\($0)")!) }
 }
 
