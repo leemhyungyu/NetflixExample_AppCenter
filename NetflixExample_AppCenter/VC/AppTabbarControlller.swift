@@ -14,13 +14,11 @@ class AppTabbarController: UITabBarController {
     let saveVC = SaveViewController()
     let settingVC = SettingViewController()
     
-    
     let homeTab: UITabBarItem = {
        
         let tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
         
         return tabBarItem
-        
     }()
     
     let searchTab: UITabBarItem = {
@@ -51,11 +49,9 @@ class AppTabbarController: UITabBarController {
         return tabBarItem
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setting()
-        // Do any additional setup after loading the view.
     }
     
     func setting() {
@@ -70,7 +66,5 @@ class AppTabbarController: UITabBarController {
         commingVC.tabBarItem = commingTab
         saveVC.tabBarItem = saveTab
         settingVC.tabBarItem = settingTab
-        
-        
     }
 }

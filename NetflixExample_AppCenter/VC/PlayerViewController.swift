@@ -1,4 +1,4 @@
-//
+
 //  PlayerViewController.swift
 //  NetflixExample_AppCenter
 //
@@ -14,7 +14,7 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     let player = AVPlayer()
     
     // 재생 버튼
-    let playBtn: UIButton = {
+    lazy var playBtn: UIButton = {
         var config = UIButton.Configuration.plain()
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 30)
         
@@ -29,11 +29,12 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     }()
     
     // 'X' 버튼
-    let backBtn: UIButton = {
-        let btn = UIButton()
+    // 초기화를 위해 lazy var로 선언
+    lazy var backBtn: UIButton = {
         var config = UIButton.Configuration.plain()
         config.preferredSymbolConfigurationForImage = UIImage.SymbolConfiguration(pointSize: 24)
-        
+
+        let btn = UIButton()
         btn.configuration = config
         btn.setImage(UIImage(systemName: "xmark"), for: .normal)
         btn.tintColor = .white
@@ -58,15 +59,15 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
         controlView.backgroundColor =  UIColor(white: 0, alpha: 0.01)
         return controlView
     }()
-    
+
     // 빈 공간 클릭시 함수를 실행하기 위한 제스쳐
-    let geusture: UITapGestureRecognizer = {
+    lazy var geusture: UITapGestureRecognizer = {
     
-        let geusture = UITapGestureRecognizer(target: self, action: #selector(tapBG))
+        let geusture = UITapGestureRecognizer(target: self, action: #selector(tapBG(_:)))
         
         return geusture
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         playerView.player = player
@@ -98,7 +99,7 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     // 빈공간이 클릭되었을 때 실행되는 함수
-    @objc func tapBG() {
+    @objc func tapBG(_ sender: UITapGestureRecognizer) {
         print("--> BG clicked")
         playBtn.isHidden = !playBtn.isHidden
         backBtn.isHidden = !backBtn.isHidden
@@ -108,11 +109,9 @@ class PlayerViewController: UIViewController, UIGestureRecognizerDelegate {
 extension PlayerViewController {
     
     func setUp() {
-
         view.addSubview(controlView)
         view.addSubview(playerView)
         view.addGestureRecognizer(geusture)
-        
         controlView.addSubview(playBtn)
         controlView.addSubview(backBtn)
 

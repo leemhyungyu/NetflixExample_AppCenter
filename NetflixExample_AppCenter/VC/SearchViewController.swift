@@ -42,7 +42,8 @@ class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         searchBar.delegate = self
-
+        
+        
         collectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(8)
             $0.top.equalTo(searchBar.snp.bottom)

@@ -9,8 +9,7 @@ import SnapKit
 
 class HomeViewController: UIViewController, UICollectionViewDataSource {
 
-
-    let viewModel = RecommentListViewModel()
+    let viewModel = HomeViewModel()
         
     lazy var collectionView: UICollectionView = {
     
@@ -95,21 +94,26 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
       
       // 섹션의 개수를 반환하는 메소드
       func numberOfSections(in collectionView: UICollectionView) -> Int {
-          return SectionType.allCases.count
+          return viewModel.numOfSection
       }
 
       // 섹셩단 아이템의 개수를 반환하는 메소드
       func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
           
           switch section {
+              
           case 0:
               return 1
+              
           case 1:
               return viewModel.awardItem.count
+              
           case 2:
               return viewModel.hotItem.count
+              
           case 3:
               return viewModel.myItem.count
+              
           default:
               return 0
           }
@@ -122,21 +126,25 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
           
           switch indexPath.section {
           case 1:
-              header.titleLabel.text = SectionType.award.title
+//              header.titleLabel.text = SectionType.award.title
+              header.titleLabel.text = viewModel.titleOfSection(at: indexPath.section)
+
               return header
           case 2:
-              header.titleLabel.text = SectionType.hot.title
+//              header.titleLabel.text = SectionType.hot.title
+              header.titleLabel.text = viewModel.titleOfSection(at: indexPath.section)
+
               return header
           case 3:
-              header.titleLabel.text = SectionType.my.title
-              
+//              header.titleLabel.text = SectionType.my.title
+              header.titleLabel.text = viewModel.titleOfSection(at: indexPath.section)
+
               return header
           default:
               header.titleLabel.text = "error"
               return header
           }
       }
-  
     
       // collectionView의 섹션마다의 cell정보를 반환하는 메소드
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -146,21 +154,20 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell else { return UICollectionViewCell() }
         
           switch indexPath.section {
+              
           case 0:
               return topCell
+              
           case 1:
-              let movies = viewModel.awardItem
-              cell.movieImage.image = movies[indexPath.row].thumbnail
+              cell.movieImage.image = viewModel.item(item: viewModel.awardItem, at: indexPath.row)
               return cell
         
           case 2:
-              let movies = viewModel.hotItem
-              cell.movieImage.image = movies[indexPath.row].thumbnail
+              cell.movieImage.image = viewModel.item(item: viewModel.hotItem, at: indexPath.row)
               return cell
             
           case 3:
-              let movies = viewModel.myItem
-              cell.movieImage.image = movies[indexPath.row].thumbnail
+              cell.movieImage.image = viewModel.item(item: viewModel.myItem, at: indexPath.row)
               return cell
             
           default:

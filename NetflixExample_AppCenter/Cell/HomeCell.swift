@@ -23,6 +23,7 @@ class HomeCell: UICollectionViewCell {
         setUp()
         
     }
+    
     func setUp() {
         addSubview(movieImage)
         
