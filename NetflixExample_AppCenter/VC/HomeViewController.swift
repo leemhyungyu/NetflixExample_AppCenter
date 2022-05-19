@@ -106,13 +106,13 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
               return 1
               
           case 1:
-              return viewModel.awardItem.count
+              return viewModel.numOfItem(at: section)
               
           case 2:
-              return viewModel.hotItem.count
+              return viewModel.numOfItem(at: section)
               
           case 3:
-              return viewModel.myItem.count
+              return viewModel.numOfItem(at: section)
               
           default:
               return 0
@@ -141,7 +141,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
 
               return header
           default:
-              header.titleLabel.text = "error"
+              header.titleLabel.text = viewModel.titleOfSection(at: indexPath.section)
               return header
           }
       }
@@ -159,15 +159,18 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
               return topCell
               
           case 1:
-              cell.movieImage.image = viewModel.item(item: viewModel.awardItem, at: indexPath.row)
+              let item = viewModel.item(at: indexPath.section)
+              cell.movieImage.image = item[indexPath.row].thumbnail
               return cell
         
           case 2:
-              cell.movieImage.image = viewModel.item(item: viewModel.hotItem, at: indexPath.row)
+              let item = viewModel.item(at: indexPath.section)
+              cell.movieImage.image = item[indexPath.row].thumbnail
               return cell
             
           case 3:
-              cell.movieImage.image = viewModel.item(item: viewModel.myItem, at: indexPath.row)
+              let item = viewModel.item(at: indexPath.section)
+              cell.movieImage.image = item[indexPath.row].thumbnail
               return cell
             
           default:
