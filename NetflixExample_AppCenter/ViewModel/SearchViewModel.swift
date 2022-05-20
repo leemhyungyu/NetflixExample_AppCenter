@@ -34,40 +34,21 @@ struct Movie: Codable {
 class SearchViewModel {
     
     var movies: [Movie] = []
-
-    static func search(_ term: String, completion: @escaping ([Movie]) -> Void) {
-        
-        let session = URLSession(configuration: .default)
-        var UrlComponents = URLComponents(string: "https://itunes.apple.com/search?")!
-        let mediaQuery = URLQueryItem(name: "media", value: "moive")
-        let entityQuery = URLQueryItem(name: "entity", value: "movie")
-        let termQuery = URLQueryItem(name: "term", value: term)
-        UrlComponents.queryItems = [mediaQuery, entityQuery, termQuery]
-        
-        let requestURL = UrlComponents.url!
-         
-        let dataTask = session.dataTask(with: requestURL) { data, response, error in
-            let successRange = 200..<300
-            guard error == nil, let statusCode = (response as? HTTPURLResponse)?.statusCode, successRange.contains(statusCode) else { return completion([]) }
-            guard let resultData = data else { return completion([]) }
-            
-            let movies = SearchViewModel.parseMovie(resultData)
-            completion(movies)
-        }
-        dataTask.resume()
+    var searchAPI: APIService = APIService()
+    
+    var numOfSection: Int {
+        return movies.count
     }
     
-    static func parseMovie(_ data: Data) -> [Movie] {
-        let decoder = JSONDecoder()
-        
-        do {
-            let response = try decoder.decode(Response.self, from: data)
-            let movies = response.movies
-            return movies
-        } catch let error {
-            print("error: \(error.localizedDescription)")
-            return []
+    func patchUI(searchTerm: String, completion: @escaping () -> Void){
+        searchAPI.search(searchTerm) { movies in
+            DispatchQueue.main.async {
+                self.movies = movies
+                completion()
+            }
         }
     }
+    
+    
 }
 

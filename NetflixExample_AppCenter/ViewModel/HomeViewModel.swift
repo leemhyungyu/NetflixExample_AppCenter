@@ -40,6 +40,7 @@ enum SectionType: CaseIterable {
         }
     }
 }
+
 class HomeViewModel {
         
     var type: [SectionType] = [.home, .award, .hot, .my]

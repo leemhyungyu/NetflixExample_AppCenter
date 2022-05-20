@@ -114,9 +114,8 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return }
         
-        SearchViewModel.search(searchTerm) { movies in
+        viewModel.patchUI(searchTerm: searchTerm) {
             DispatchQueue.main.async {
-                self.viewModel.movies = movies
                 self.collectionView.reloadData()
             }
         }

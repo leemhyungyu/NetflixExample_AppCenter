@@ -27,6 +27,7 @@
 		2CE4B1072830D2E700F71CF0 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4B1062830D2E700F71CF0 /* SearchCell.swift */; };
 		2CE4B10A2830FB3400F71CF0 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4B1092830FB3400F71CF0 /* PlayerViewController.swift */; };
 		2CE4B10C2831076500F71CF0 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE4B10B2831076500F71CF0 /* PlayerView.swift */; };
+		2CE75E6A2837CCFE00A0BBFA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE75E692837CCFE00A0BBFA /* APIService.swift */; };
 		368DDFE2B8ED09A3B10937AB /* Pods_NetflixExample_AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F33575E8AAFC381ADE80981D /* Pods_NetflixExample_AppCenter.framework */; };
 		90A427ECFBEB04035E97D901 /* Pods_NetflixExample_AppCenter_NetflixExample_AppCenterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC48917CA02F06076399CE1 /* Pods_NetflixExample_AppCenter_NetflixExample_AppCenterUITests.framework */; };
 /* End PBXBuildFile section */
@@ -75,6 +76,7 @@
 		2CE4B1062830D2E700F71CF0 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		2CE4B1092830FB3400F71CF0 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		2CE4B10B2831076500F71CF0 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		2CE75E692837CCFE00A0BBFA /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		4A00968E35EF251D49FC17E2 /* Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests/Pods-NetflixExample_AppCenter-NetflixExample_AppCenterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEBE30F1CC4262EA064E04C /* Pods-NetflixExample_AppCenterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenterTests.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenterTests/Pods-NetflixExample_AppCenterTests.release.xcconfig"; sourceTree = "<group>"; };
 		A958FD2D8A514FBEE0EE8C72 /* Pods-NetflixExample_AppCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetflixExample_AppCenter.release.xcconfig"; path = "Target Support Files/Pods-NetflixExample_AppCenter/Pods-NetflixExample_AppCenter.release.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		2C6887142827DF8B0021C613 /* NetflixExample_AppCenter */ = {
 			isa = PBXGroup;
 			children = (
+				2CE75E682837CCE000A0BBFA /* API Services */,
 				2CE4B1082830F7FD00F71CF0 /* ViewModel */,
 				2CDD593F282CEB1500CFC8AC /* Cell */,
 				2C68874A2827E04D0021C613 /* VC */,
@@ -180,6 +183,14 @@
 				2C927DB728290EAE0045DED8 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2CE75E682837CCE000A0BBFA /* API Services */ = {
+			isa = PBXGroup;
+			children = (
+				2CE75E692837CCFE00A0BBFA /* APIService.swift */,
+			);
+			path = "API Services";
 			sourceTree = "<group>";
 		};
 		89BA6E25F45E589ED087236B /* Frameworks */ = {
@@ -459,6 +470,7 @@
 				2CDD5945282D743D00CFC8AC /* HomeHeaderView.swift in Sources */,
 				2C6887182827DF8B0021C613 /* SceneDelegate.swift in Sources */,
 				2CE4B1052830CC5400F71CF0 /* SearchViewModel.swift in Sources */,
+				2CE75E6A2837CCFE00A0BBFA /* APIService.swift in Sources */,
 				2CE4B10C2831076500F71CF0 /* PlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

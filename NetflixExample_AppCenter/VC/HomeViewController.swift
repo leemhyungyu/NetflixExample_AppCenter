@@ -12,7 +12,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
     let viewModel = HomeViewModel()
         
     lazy var collectionView: UICollectionView = {
-    
+        
         // sectionIndex를 인자로 받아 NSCollectionLayoutSection타입을 반환하는 클로저
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             switch sectionIndex {
@@ -56,17 +56,22 @@ class HomeViewController: UIViewController, UICollectionViewDataSource {
     // 첫번쨰 cell의 NSCollectionLayoutSection을 반환해주는 함수
     func homeFirstCreateCompositionalLayout() -> NSCollectionLayoutSection {
         
+        // 아이템들의 layoutSize인 width, heigth 설정
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(466))
+        // 아이템의 layoutSize를 가진 NSCollectionLayoutItem 객체 생성 -> item 생성
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
+        // 그룹의 layoutSize인 width, heigth 설정
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(480))
+        // 그룹의 layoutSize와, subitem -> 그룹안에 들어갈 item, count -> 그룹당 보여질 아이템 수를 가진 NSCollectionLayoutGroup 객체 생성 -> group 생성
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
         
+        // 섹션의 group을 가진 NSCollectionLayoutSection객체 생성 -> section 생성
         let section = NSCollectionLayoutSection(group: group)
+        // 섹션의 마진 값 설정
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
         
         return section
-        
     }
     
     // 나머지 cell의 NSCollectionLayoutSection을 반환해주는 함수
