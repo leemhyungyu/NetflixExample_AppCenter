@@ -7,6 +7,16 @@
 
 import Foundation
 
+struct Response: Codable {
+    let resultCount: Int
+    let movies: [Movie]
+    
+    enum CodingKeys: String, CodingKey {
+        case resultCount
+        case movies = "results"
+    }
+}
+
 class APIService {
     
     func search(_ term: String, completion: @escaping ([Movie]) -> Void) {

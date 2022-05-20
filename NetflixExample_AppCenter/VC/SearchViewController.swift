@@ -82,7 +82,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 
         guard let searchCell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.identifier, for: indexPath) as? SearchCell else { return UICollectionViewCell() }
         
-        let movie = viewModel.movies[indexPath.item]
+//        let movie = viewModel.movies[indexPath.item]
+        let movie = viewModel.item(at: indexPath.row)
         let url = URL(string: movie.thumbnailPath)!
         searchCell.imageView.kf.setImage(with: url)
         
@@ -91,7 +92,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
     // 아이템이 클릭되었을 때 실행되는 메소드
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let url = URL(string: viewModel.movies[indexPath.item].previewURL)!
+        let movie = viewModel.item(at: indexPath.row)
+        let url = URL(string: movie.previewURL)!
         let item = AVPlayerItem(url: url)
         
         let playerVC = PlayerViewController()
@@ -115,9 +117,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text, searchTerm.isEmpty == false else { return }
         
         viewModel.patchUI(searchTerm: searchTerm) {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            self.collectionView.reloadData()
         }
         print("--> 검색어: \(searchTerm)")
     }
